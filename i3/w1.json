@@ -1,0 +1,92 @@
+{
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            // splitv split container with 2 children
+            "border": "pixel",
+            "floating": "auto_off",
+            "layout": "splitv",
+            "marks": [],
+            "percent": 0.4,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "pixel",
+                    "current_border_width": 1,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 600,
+                       "width": 800,
+                       "x": 0,
+                       "y": 0
+                    },
+                    "marks": [],
+                    "name": "XD",
+                    "percent": 0.5,
+                    "swallows": [
+                       {
+                       "class": "^Alacritty$",
+                       "instance": "^Alacritty$"
+                       }
+                    ],
+                    "type": "con"
+                },
+                {
+                    // splith split container with 1 children
+                    "border": "pixel",
+                    "floating": "auto_off",
+                    "layout": "splith",
+                    "marks": [],
+                    "percent": 0.5,
+                    "type": "con",
+                    "nodes": [
+                        {
+                            "border": "pixel",
+                            "current_border_width": 1,
+                            "floating": "auto_off",
+                            "geometry": {
+                               "height": 600,
+                               "width": 800,
+                               "x": 0,
+                               "y": 0
+                            },
+                            "marks": [],
+                            "name": "XD",
+                            "percent": 1,
+                            "swallows": [
+                               {
+                               "class": "^Alacritty$",
+                               "instance": "^Alacritty$"
+                               }
+                            ],
+                            "type": "con"
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1049,
+               "width": 632,
+               "x": 1283,
+               "y": 26
+            },
+            "marks": [],
+            "name": "xD",
+            "percent": 0.6,
+            "swallows": [
+               {
+               "class": "^Alacritty$",
+               "instance": "^Alacritty$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
