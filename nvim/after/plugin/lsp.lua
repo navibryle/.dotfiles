@@ -71,6 +71,13 @@ require("lspconfig").sumneko_lua.setup(config({
 -- java config using jdk 18
 nnoremap('<leader>tc', function() require 'jdtls'.test_class() end)
 nnoremap('<leader>tm', function() require 'jdtls'.test_nearest_method() end)
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+local bundles = {
+  vim.fn.glob("/home/ivan/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.39.0.jar"),
+};
+
+-- This is the new part
+vim.list_extend(bundles, vim.split(vim.fn.glob("/home/ivan/.local/share/vscode-java-test/server/*.jar"), "\n"))
 local config = {
     cmd = {
         'java',
@@ -86,6 +93,7 @@ local config = {
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
         '-jar', '/home/ivan/.local/share/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
         '-configuration', '/home/ivan/.local/share/jdtls/config_linux',
+        '-data','/home/ivan/.local/share/eclipse-project-data' .. project_name
     },
 
     settings = {
@@ -93,11 +101,13 @@ local config = {
         }
     },
 
-    init_options = {
-        bundles = {
-            vim.fn.glob("/home/ivan/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.39.0.jar")
-        }
+    on_attach = function (client, bufnr)
+        require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+    end
+    ,
 
+    init_options = {
+        bundles
     },
 }
 require('jdtls').start_or_attach(config)
