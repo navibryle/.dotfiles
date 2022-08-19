@@ -68,8 +68,40 @@ require("lspconfig").sumneko_lua.setup(config({
         },
     },
 }))
+-- java config using jdk 18
+nnoremap('<leader>tc', function() require 'jdtls'.test_class() end)
+nnoremap('<leader>tm', function() require 'jdtls'.test_nearest_method() end)
+local config = {
+    cmd = {
+        'java',
+
+        '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+        '-Dosgi.bundles.defaultStartLevel=4',
+        '-Declipse.product=org.eclipse.jdt.ls.core.product',
+        '-Dlog.protocol=true',
+        '-Dlog.level=ALL',
+        '-Xms1g',
+        '--add-modules=ALL-SYSTEM',
+        '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+        '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+        '-jar', '/home/ivan/.local/share/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
+        '-configuration', '/home/ivan/.local/share/jdtls/config_linux',
+    },
+
+    settings = {
+        java = {
+        }
+    },
+
+    init_options = {
+        bundles = {
+            vim.fn.glob("/home/ivan/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.39.0.jar")
+        }
+
+    },
+}
+require('jdtls').start_or_attach(config)
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 require('lspconfig')['pyright'].setup {
     capabilities = capabilities
 }
-
