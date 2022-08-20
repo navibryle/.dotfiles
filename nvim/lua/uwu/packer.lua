@@ -25,6 +25,7 @@ require('packer').startup(function()
 --    use 'jose-elias-alvarez/null-ls.nvim'
     use 'Mofiqul/dracula.nvim'
     use 'nvim-treesitter/nvim-treesitter'
+    use 'terrortylor/nvim-comment'
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         requires = { { 'nvim-lua/plenary.nvim' } }

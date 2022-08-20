@@ -1,7 +1,8 @@
 require("uwu")
 require('nvim-tree').setup()
-
+require('nvim_comment').setup()
 require('lualine').setup()
+
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
@@ -36,6 +37,9 @@ inoremap('<leader>y','"+y')
 nnoremap('<leader>p','"+p')
 vnoremap('<leader>p','"+p')
 inoremap('<leader>p','"+p')
+nnoremap('<leader>q',':q!<cr>')
+vnoremap('<leader>q',':q!<cr>')
+nnoremap('<leader>.','<c-w>')
 
 vim.opt.guicursor = ""
 

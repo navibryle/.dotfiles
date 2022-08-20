@@ -5,9 +5,6 @@ local javaBundles = {
   vim.fn.glob("/home/ivan/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.39.0.jar"),
 };
 vim.list_extend(javaBundles, vim.split(vim.fn.glob("/home/ivan/.local/share/vscode-java-test/server/*.jar"), "\n"))
-for i,j in pairs(javaBundles) do
-    print(i,j)
-end
 local javaConfig = {
     cmd = {
         'java',
