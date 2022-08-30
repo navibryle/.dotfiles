@@ -33,10 +33,8 @@ nnoremap('<leader>di', function() require'dap'.step_into() end)
 nnoremap('<leader>dr', function() require'dap'.repl.open() end)
 nnoremap('<leader>y','"+y')
 vnoremap('<leader>y','"+y')
-inoremap('<leader>y','"+y')
 nnoremap('<leader>p','"+p')
 vnoremap('<leader>p','"+p')
-inoremap('<leader>p','"+p')
 nnoremap('<leader>q',':q!<cr>')
 vnoremap('<leader>q',':q!<cr>')
 nnoremap('<leader>.','<c-w>')
@@ -55,7 +53,7 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+-- vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
