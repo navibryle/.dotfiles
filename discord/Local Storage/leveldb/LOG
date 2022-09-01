@@ -1,0 +1,6 @@
+2022/08/31-20:56:01.006 c5f Reusing MANIFEST /home/ivan/.config/discord/Local Storage/leveldb/MANIFEST-000001
+2022/08/31-20:56:01.006 c5f Recovering log #41
+2022/08/31-20:56:01.006 c5f Reusing old log /home/ivan/.config/discord/Local Storage/leveldb/000041.log 
+2022/08/31-21:03:20.015 c4e Level-0 table #46: started
+2022/08/31-21:03:20.029 c4e Level-0 table #46: 1112564 bytes OK
+2022/08/31-21:03:20.031 c4e Delete type=0 #41
