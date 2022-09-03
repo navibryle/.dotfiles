@@ -22,22 +22,22 @@ vim.cmd [[colorscheme dracula]]
 vim.g.mapleader = ',' -- 'vim.g' sets global variables
 
 nnoremap('<leader>m', ':NvimTreeToggle<cr>')
-nnoremap('<leader>ff',function ()require('telescope.builtin').find_files()end)
-nnoremap('<leader>fg',function ()require('telescope.builtin').live_grep()end)
-nnoremap('<leader>fb',function ()require('telescope.builtin').buffers()end)
-nnoremap('<leader>fh',function ()require('telescope.builtin').help_tags()end)
+nnoremap('<leader>ff', function() require('telescope.builtin').find_files() end)
+nnoremap('<leader>fg', function() require('telescope.builtin').live_grep() end)
+nnoremap('<leader>fb', function() require('telescope.builtin').buffers() end)
+nnoremap('<leader>fh', function() require('telescope.builtin').help_tags() end)
 nnoremap('<leader>f', function() vim.lsp.buf.formatting() end)
-nnoremap('<leader>db', function() require'dap'.toggle_breakpoint() end)
-nnoremap('<leader>do', function() require'dap'.step_over() end)
-nnoremap('<leader>di', function() require'dap'.step_into() end)
-nnoremap('<leader>dr', function() require'dap'.repl.open() end)
-nnoremap('<leader>y','"+y')
-vnoremap('<leader>y','"+y')
-nnoremap('<leader>p','"+p')
-vnoremap('<leader>p','"+p')
-nnoremap('<leader>q',':q!<cr>')
-vnoremap('<leader>q',':q!<cr>')
-nnoremap('<leader>.','<c-w>')
+nnoremap('<leader>db', function() require 'dap'.toggle_breakpoint() end)
+nnoremap('<leader>do', function() require 'dap'.step_over() end)
+nnoremap('<leader>di', function() require 'dap'.step_into() end)
+nnoremap('<leader>dr', function() require 'dap'.repl.open() end)
+nnoremap('<leader>y', '"+y')
+vnoremap('<leader>y', '"+y')
+nnoremap('<leader>p', '"+p')
+vnoremap('<leader>p', '"+p')
+nnoremap('<leader>q', ':q!<cr>')
+nnoremap('<leader>w', ':w<cr>')
+nnoremap('<leader>.', '<c-w>')
 
 vim.opt.guicursor = ""
 
@@ -53,7 +53,7 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
--- vim.opt.wrap = false
+vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -79,15 +79,21 @@ vim.opt.updatetime = 50
 -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append("c")
 
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
+require 'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,
+        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+        -- Using this option may slow down your editor, and you may see some duplicate highlights.
+        -- Instead of true it can also be a list of languages
+        additional_vim_regex_highlighting = false,
+    },
 }
 
-
+require('lualine').setup {
+    options = {
+        -- ...
+        theme = 'dracula-nvim'
+        -- ...
+    }
+}
