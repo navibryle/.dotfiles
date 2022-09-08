@@ -1,2 +1,6 @@
-2022/09/01-14:05:04.595 977f Creating DB /home/ivan/.config/Slack/Local Storage/leveldb since it was missing.
-2022/09/01-14:05:04.598 977f Reusing MANIFEST /home/ivan/.config/Slack/Local Storage/leveldb/MANIFEST-000001
+2022/09/07-18:32:02.085 14748 Reusing MANIFEST /home/ivan/.config/Slack/Local Storage/leveldb/MANIFEST-000001
+2022/09/07-18:32:02.087 14748 Recovering log #22
+2022/09/07-18:32:02.088 14748 Reusing old log /home/ivan/.config/Slack/Local Storage/leveldb/000022.log 
+2022/09/07-18:51:02.327 18664 Level-0 table #26: started
+2022/09/07-18:51:02.333 18664 Level-0 table #26: 10727 bytes OK
+2022/09/07-18:51:02.335 18664 Delete type=0 #22

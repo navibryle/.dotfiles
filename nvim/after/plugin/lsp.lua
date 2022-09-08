@@ -3,8 +3,12 @@ local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
 local sumneko_root_path = "/opt/luaLs"
 local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
-local cmp = require 'cmp'
-
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp = require('cmp')
+cmp.event:on(
+    'confirm_done',
+    cmp_autopairs.on_confirm_done()
+)
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -43,7 +47,7 @@ end
 
 -- Setup lspconfig.
 require 'lspconfig'.pyright.setup { config() }
-require 'lspconfig'.clangd.setup { config() }
+require 'lspconfig'.clangd.setup{config()}
 require("lspconfig").sumneko_lua.setup(config({
     cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
     settings = {
@@ -73,4 +77,6 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 require('lspconfig')['pyright'].setup {
     capabilities = capabilities
 }
-require'lspconfig'.rust_analyzer.setup({})
+require'lspconfig'.cmake.setup{}
+require 'lspconfig'.rust_analyzer.setup({})
+require 'lspconfig'.bashls.setup {}
