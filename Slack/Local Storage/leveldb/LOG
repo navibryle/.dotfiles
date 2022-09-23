@@ -1,3 +1,6 @@
-2022/09/08-11:45:41.843 545b4 Reusing MANIFEST /home/ivan/.config/Slack/Local Storage/leveldb/MANIFEST-000001
-2022/09/08-11:45:41.844 545b4 Recovering log #25
-2022/09/08-11:45:41.844 545b4 Reusing old log /home/ivan/.config/Slack/Local Storage/leveldb/000025.log 
+2022/09/22-11:58:13.826 25a9e Reusing MANIFEST /home/ivan/.config/Slack/Local Storage/leveldb/MANIFEST-000001
+2022/09/22-11:58:13.826 25a9e Recovering log #130
+2022/09/22-11:58:13.826 25a9e Reusing old log /home/ivan/.config/Slack/Local Storage/leveldb/000130.log 
+2022/09/22-14:59:55.191 587a8 Level-0 table #135: started
+2022/09/22-14:59:55.205 587a8 Level-0 table #135: 11282 bytes OK
+2022/09/22-14:59:55.207 587a8 Delete type=0 #130

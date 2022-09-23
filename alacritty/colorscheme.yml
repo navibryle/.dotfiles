@@ -1,0 +1,57 @@
+items:
+  - colors:
+      name: 3024 (dark)
+      author: Chris Kempson
+      primary:
+        background: "#090300"
+        foreground: "#a5a2a2"
+      cursor:
+        text: "#090300"
+        cursor: "#a5a2a2"
+      normal:
+        black: "#090300"
+        red: "#db2d20"
+        green: "#01a252"
+        yellow: "#fded02"
+        blue: "#01a0e4"
+        magenta: "#a16a94"
+        cyan: "#b5e4f4"
+        white: "#a5a2a2"
+      bright:
+        black: "#5c5855"
+        red: "#db2d20"
+        green: "#01a252"
+        yellow: "#fded02"
+        blue: "#01a0e4"
+        magenta: "#a16a94"
+        cyan: "#b5e4f4"
+        white: "#f7f7f7"
+  - theme: 3024.dark
+colors:
+  name: Grandshell
+  author: ""
+  primary:
+    background: "#000000"
+    foreground: "#bebebe"
+  cursor:
+    text: "#000000"
+    cursor: "#bebebe"
+  normal:
+    black: "#000000"
+    red: "#f25a5a"
+    green: "#77bb33"
+    yellow: "#efc334"
+    blue: "#5555dd"
+    magenta: "#c350ff"
+    cyan: "#5af2ee"
+    white: "#bebebe"
+  bright:
+    black: "#222222"
+    red: "#ffbbbb"
+    green: "#dcf692"
+    yellow: "#f6df92"
+    blue: "#b2baf6"
+    magenta: "#f09fff"
+    cyan: "#5af2ee"
+    white: "#eeeeee"
+theme: Grandshell
