@@ -108,11 +108,11 @@ map("n", "<Space>bw", "<Cmd>BufferOrderByWindowNumber<CR>", opts)
 vim.api.nvim_create_autocmd("BufWinEnter", {
   pattern = "*",
   callback = function()
-    if vim.bo.filetype == "NvimTree" then require("bufferline.state").set_offset(31, "FileTree") end
+    if vim.bo.filetype == "NvimTree" then require("bufferline.api").set_offset(31, "FileTree") end
   end,
 })
 local nvim_tree_events = require "nvim-tree.events"
-local bufferline_state = require "bufferline.state"
+local bufferline_state = require "bufferline.api"
 
 local function get_tree_size() return require("nvim-tree.view").View.width end
 

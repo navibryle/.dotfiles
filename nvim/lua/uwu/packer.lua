@@ -47,7 +47,6 @@ require("packer").startup(function()
     "andrewferrier/debugprint.nvim",
     config = function() require("debugprint").setup() end,
   }
-  use "yamatsum/nvim-cursorline"
   use {
     "numToStr/Comment.nvim",
     config = function() require("Comment").setup() end,
@@ -93,5 +92,10 @@ require("packer").startup(function()
         disable_legacy_commands = true,
       }
     end,
+  }
+  use "andweeb/presence.nvim"
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig",
   }
 end)

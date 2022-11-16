@@ -5,8 +5,9 @@ local sumneko_root_path = "/opt/luaLs"
 local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 local cmp = require "cmp"
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspkind = require "lspkind"
+local navic = require "nvim-navic"
 capabilities.offsetEncoding = { "utf-16" }
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 cmp.setup {
@@ -91,14 +92,15 @@ require("lspconfig")["pyright"].setup {
 require("lspconfig").clangd.setup {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
+    navic.attach(client, bufnr)
+    vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
     vim.api.nvim_create_autocmd({ "BufWritePost" }, {
       callback = function()
-        require("lint").try_lint()
+        -- require("lint").try_lint()
         vim.cmd "FormatWrite"
       end,
     })
   end,
-  capabilities = capabilities,
 }
 require("lspconfig").texlab.setup {
   settings = {

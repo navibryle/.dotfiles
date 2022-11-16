@@ -44,6 +44,7 @@ require("indent_blankline").setup {
 local Remap = require "uwu.keymaps"
 local nnoremap = Remap.nnoremap
 local vnoremap = Remap.vnoremap
+local inoremap = Remap.inoremap
 
 vim.g.mapleader = " "
 
@@ -74,10 +75,15 @@ nnoremap("<C-k>", "<c-w>k")
 nnoremap("<C-l>", "<c-w>l")
 nnoremap("<C-b>", "<c-w>c")
 nnoremap("<C-v>", "<c-w>v")
+inoremap("<M-n>", "<Nop>")
+inoremap("<M-o>", "<Nop>")
+inoremap("<MS-n>", "<Nop>")
+inoremap("<SM-n>", "<Nop>")
 nnoremap("<leader>v", "<c-v>")
 nnoremap("<leader>c", ":setlocal spell! spelllang=en_us<cr>")
-
+nnoremap("<leader>a", "<cmd>AerialToggle!<CR>")
 vim.notify = require "notify"
+
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
@@ -93,6 +99,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
+vim.opt.spell = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -116,18 +123,6 @@ vim.opt.updatetime = 50
 -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append "c"
 require("colorizer").setup()
-require("nvim-cursorline").setup {
-  cursorline = {
-    enable = true,
-    timeout = 1000,
-    number = false,
-  },
-  cursorword = {
-    enable = true,
-    min_length = 3,
-    hl = { underline = true },
-  },
-}
 require("Comment").setup()
 
 require("nvim-treesitter.configs").setup {
@@ -152,27 +147,41 @@ require("nvim-treesitter.configs").setup {
 require("material").setup {
 
   contrast = {
+    terminal = false, -- Enable contrast for the built-in terminal
     sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
-    floating_windows = true, -- Enable contrast for floating windows
-    line_numbers = true, -- Enable contrast background for line numbers
-    sign_column = false, -- Enable contrast background for the sign column
+    floating_windows = false, -- Enable contrast for floating windows
     cursor_line = false, -- Enable darker background for the cursor line
     non_current_windows = false, -- Enable darker background for non-current windows
-    popup_menu = true, -- Enable lighter background for the popup menu
+    filetypes = {}, -- Specify which filetypes get the contrasted (darker) background
   },
 
-  italics = {
-    comments = false, -- Enable italic comments
-    keywords = false, -- Enable italic keywords
-    functions = true, -- Enable italic functions
-    strings = false, -- Enable italic strings
-    variables = false, -- Enable italic variables
+  styles = { -- Give comments style such as bold, italic, underline etc.
+    comments = { italic = true },
+    strings = { bold = true },
+    keywords = { underline = true },
+    functions = { bold = true, undercurl = true },
+    variables = {},
+    operators = {},
+    types = {},
   },
 
-  contrast_filetypes = { -- Specify which filetypes get the contrasted (darker) background
-    "terminal", -- Darker terminal background
-    "packer", -- Darker packer background
-    "qf", -- Darker qf list background
+  plugins = { -- Uncomment the plugins that you use to highlight them
+    -- Available plugins:
+    "dap",
+    "nvim-cmp",
+    -- "nvim-navic",
+    "nvim-tree",
+    "telescope",
+    "trouble",
+    -- "which-key",
+  },
+
+  disable = {
+    colored_cursor = false, -- Disable the colored cursor
+    borders = false, -- Disable borders between verticaly split windows
+    background = false, -- Prevent the theme from setting the background (NeoVim then uses your terminal background)
+    term_colors = false, -- Prevent the theme from setting terminal colors
+    eob_lines = false, -- Hide the end-of-buffer lines
   },
 
   high_visibility = {
@@ -180,41 +189,14 @@ require("material").setup {
     darker = false, -- Enable higher contrast text for darker style
   },
 
-  disable = {
-    colored_cursor = false, -- Disable the colored cursor
-    borders = false, -- Disable borders between verticaly split windows
-    background = false, -- Prevent the theme from setting the background (NeoVim then uses your teminal background)
-    term_colors = false, -- Prevent the theme from setting terminal colors
-    eob_lines = false, -- Hide the end-of-buffer lines
-  },
-
   lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
 
   async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
 
+  custom_colors = nil, -- If you want to everride the default colors, set this to a function
+
   custom_highlights = {}, -- Overwrite highlights with your own
-
-  plugins = { -- Here, you can disable(set to false) plugins that you don't use or don't want to apply the theme to
-    trouble = true,
-    nvim_cmp = true,
-    neogit = true,
-    gitsigns = true,
-    git_gutter = true,
-    telescope = true,
-    nvim_tree = true,
-    sidebar_nvim = true,
-    lsp_saga = true,
-    nvim_dap = true,
-    nvim_navic = true,
-    which_key = true,
-    sneak = true,
-    hop = true,
-    indent_blankline = true,
-    nvim_illuminate = true,
-    mini = true,
-  },
 }
-
 vim.opt.termguicolors = true
 vim.o.termguicolors = true
 vim.g.material_style = "deep ocean"
@@ -263,10 +245,12 @@ local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<Leader><Leader>i", "<cmd>IconPickerNormal<cr>", opts)
 vim.keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts) --> Yank the selected icon into register
-vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
+-- vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
 vim.notify.setup {
   fps = 1,
   render = "minimal",
   stages = "static",
-  timeout = 2000,
+  timeout = 9000,
 }
+-- presence nvim
+require("presence"):setup()
