@@ -41,6 +41,19 @@ require("formatter").setup {
         }
       end,
     },
+    c = {
+      function()
+        return {
+          exe = "clang-format",
+          args = {
+            '--style "{IndentWidth: 4 ,ColumnLimit: 120,SeparateDefinitionBlocks: Always}"',
+            "-assume-filename",
+            util.escape_path(util.get_current_buffer_file_path()),
+          },
+          stdin = true,
+        }
+      end,
+    },
     cpp = {
       function()
         return {
