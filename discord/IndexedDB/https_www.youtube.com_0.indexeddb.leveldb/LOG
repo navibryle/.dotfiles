@@ -1,0 +1,7 @@
+2022/12/17-19:32:34.749 b687d Reusing MANIFEST /home/ivan/.config/discord/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2022/12/17-19:32:34.749 b687d Recovering log #3
+2022/12/17-19:32:34.749 b687d Reusing old log /home/ivan/.config/discord/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000003.log 
+2022/12/17-19:35:57.997 bf130 Level-0 table #5: started
+2022/12/17-19:35:57.999 bf130 Level-0 table #5: 15930 bytes OK
+2022/12/17-19:35:58.001 bf130 Delete type=0 #3
+2022/12/17-19:35:58.001 bf130 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
