@@ -302,6 +302,16 @@ _G.packer_plugins = {
     path = "/home/ivan/.local/share/nvim/site/pack/packer/start/quick-scope",
     url = "https://github.com/unblevable/quick-scope"
   },
+  ["sqlite.lua"] = {
+    loaded = true,
+    path = "/home/ivan/.local/share/nvim/site/pack/packer/start/sqlite.lua",
+    url = "https://github.com/kkharji/sqlite.lua"
+  },
+  ["telescope-frecency.nvim"] = {
+    loaded = true,
+    path = "/home/ivan/.local/share/nvim/site/pack/packer/start/telescope-frecency.nvim",
+    url = "https://github.com/nvim-telescope/telescope-frecency.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/ivan/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -332,46 +342,46 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: debugprint.nvim
-time([[Config for debugprint.nvim]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15debugprint\frequire\0", "config", "debugprint.nvim")
-time([[Config for debugprint.nvim]], false)
--- Config for: git-conflict.nvim
-time([[Config for git-conflict.nvim]], true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17git-conflict\frequire\0", "config", "git-conflict.nvim")
-time([[Config for git-conflict.nvim]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
-time([[Config for nvim-autopairs]], false)
--- Config for: icon-picker.nvim
-time([[Config for icon-picker.nvim]], true)
-try_loadstring("\27LJ\2\nY\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\28disable_legacy_commands\2\nsetup\16icon-picker\frequire\0", "config", "icon-picker.nvim")
-time([[Config for icon-picker.nvim]], false)
--- Config for: vimwiki
-time([[Config for vimwiki]], true)
-try_loadstring("\27LJ\2\n\1\0\0\3\0\4\0\a6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0K\0\1\0\1\0\3\21template_default\fdefault\18template_path./home/ivan/.local/share/vimwiki/templates\17template_ext\n.html\17vimwiki_list\6g\bvim\0", "config", "vimwiki")
-time([[Config for vimwiki]], false)
 -- Config for: aerial.nvim
 time([[Config for aerial.nvim]], true)
 try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vaerial\frequire\0", "config", "aerial.nvim")
 time([[Config for aerial.nvim]], false)
+-- Config for: git-conflict.nvim
+time([[Config for git-conflict.nvim]], true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17git-conflict\frequire\0", "config", "git-conflict.nvim")
+time([[Config for git-conflict.nvim]], false)
 -- Config for: alpha-nvim
 time([[Config for alpha-nvim]], true)
 try_loadstring("\27LJ\2\n`\0\0\5\0\5\0\n6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0029\2\4\2B\0\2\1K\0\1\0\vconfig\26alpha.themes.startify\nsetup\nalpha\frequire\0", "config", "alpha-nvim")
 time([[Config for alpha-nvim]], false)
--- Config for: goto-preview
-time([[Config for goto-preview]], true)
-try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17goto-preview\frequire\0", "config", "goto-preview")
-time([[Config for goto-preview]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: debugprint.nvim
+time([[Config for debugprint.nvim]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15debugprint\frequire\0", "config", "debugprint.nvim")
+time([[Config for debugprint.nvim]], false)
+-- Config for: icon-picker.nvim
+time([[Config for icon-picker.nvim]], true)
+try_loadstring("\27LJ\2\nY\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\28disable_legacy_commands\2\nsetup\16icon-picker\frequire\0", "config", "icon-picker.nvim")
+time([[Config for icon-picker.nvim]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+time([[Config for nvim-autopairs]], false)
+-- Config for: vimwiki
+time([[Config for vimwiki]], true)
+try_loadstring("\27LJ\2\n\1\0\0\3\0\4\0\a6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0K\0\1\0\1\0\3\21template_default\fdefault\18template_path./home/ivan/.local/share/vimwiki/templates\17template_ext\n.html\17vimwiki_list\6g\bvim\0", "config", "vimwiki")
+time([[Config for vimwiki]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
 time([[Config for trouble.nvim]], false)
+-- Config for: goto-preview
+time([[Config for goto-preview]], true)
+try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17goto-preview\frequire\0", "config", "goto-preview")
+time([[Config for goto-preview]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

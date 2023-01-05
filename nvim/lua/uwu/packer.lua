@@ -38,7 +38,6 @@ require("packer").startup(function()
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end,
   }
-  use "dsych/blanket.nvim"
   use "rmagatti/auto-session"
   use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
   use "theHamsta/nvim-dap-virtual-text"
@@ -103,4 +102,8 @@ require("packer").startup(function()
     config = function() require("goto-preview").setup {} end,
   }
   use { "akinsho/git-conflict.nvim", tag = "*", config = function() require("git-conflict").setup() end }
+  use {
+    "nvim-telescope/telescope-frecency.nvim",
+    requires = { "kkharji/sqlite.lua" },
+  }
 end)
