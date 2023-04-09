@@ -32,4 +32,5 @@ nvim/.luacheckrc
 nvim/.luarc.json
 nvim/.stylua.toml
 __pycache__/
+*.pyc
 s.sh
