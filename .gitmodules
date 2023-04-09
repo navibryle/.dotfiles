@@ -1,0 +1,27 @@
+[submodule "tmux/plugins/tmux-continuum"]
+	path = tmux/plugins/tmux-continuum
+	url = https://git::@github.com/tmux-plugins/tmux-continuum
+[submodule "tmux/plugins/tmux-cpu"]
+	path = tmux/plugins/tmux-cpu
+	url = https://git::@github.com/tmux-plugins/tmux-cpu
+[submodule "tmux/plugins/tmux-fzf-url"]
+	path = tmux/plugins/tmux-fzf-url
+	url = https://github.com/wfxr/tmux-fzf-url
+[submodule "tmux/plugins/tmux-mem-cpu-load"]
+	path = tmux/plugins/tmux-mem-cpu-load
+	url = https://github.com/thewtex/tmux-mem-cpu-load
+[submodule "tmux/plugins/tmux-power"]
+	path = tmux/plugins/tmux-power
+	url = https://github.com/wfxr/tmux-power
+[submodule "tmux/plugins/tmux-ressurect"]
+	path = tmux/plugins/tmux-ressurect
+	url = https://github.com/tmux-plugins/tmux-resurrect
+[submodule "tmux/plugins/tmux-sensible"]
+	path = tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible
+[submodule "tmux/plugins/tmux-yank"]
+	path = tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank
+[submodule "tmux/plugins/tmux-tpm"]
+	path = tmux/plugins/tmux-tpm
+	url = https://github.com/tmux-plugins/tpm
