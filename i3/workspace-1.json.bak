@@ -1,0 +1,106 @@
+// vim:ts=4:sw=4:et
+{
+    // splitv split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.4,
+    "type": "con",
+    "nodes": [
+        {
+            // splith split container with 1 children
+            "border": "pixel",
+            "floating": "auto_off",
+            "layout": "splith",
+            "marks": [],
+            "percent": 0.6,
+            "type": "con",
+            "nodes": [
+                {
+                    // splith split container with 1 children
+                    "border": "pixel",
+                    "floating": "auto_off",
+                    "layout": "splith",
+                    "marks": [],
+                    "percent": 1,
+                    "type": "con",
+                    "nodes": [
+                        {
+                            "border": "pixel",
+                            "current_border_width": 1,
+                            "floating": "auto_off",
+                            "geometry": {
+                               "height": 600,
+                               "width": 800,
+                               "x": 0,
+                               "y": 0
+                            },
+                            "marks": [],
+                            "name": "XD",
+                            "percent": 1,
+                            "swallows": [
+                               {
+                               "class": "^Alacritty$",
+                               "instance": "^Alacritty$",
+                               // "machine": "^ivan\\-82c4$",
+                               // "title": "^XD$"
+                               }
+                            ],
+                            "type": "con"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 600,
+               "width": 800,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "XD",
+            "percent": 0.4,
+            "swallows": [
+               {
+               "class": "^Alacritty$",
+               "instance": "^Alacritty$",
+               // "machine": "^ivan\\-82c4$",
+               // "title": "^XD$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 1,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1015,
+       "width": 472,
+       "x": 1443,
+       "y": 60
+    },
+    "marks": [],
+    "name": "a.cpp - cp - Visual Studio Code",
+    "percent": 0.6,
+    "swallows": [
+       {
+       "class": "^Code$",
+       "instance": "^code$",
+       // "machine": "^ivan\\-82c4$",
+       // "title": "^a\\.cpp\\ \\-\\ cp\\ \\-\\ Visual\\ Studio\\ Code$",
+       // "window_role": "^browser\\-window$"
+       }
+    ],
+    "type": "con"
+}
+
