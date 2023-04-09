@@ -1,6 +1,0 @@
-2022/12/25-22:31:16.563 4288 Reusing MANIFEST /home/ivan/.config/discord/Local Storage/leveldb/MANIFEST-000001
-2022/12/25-22:31:16.563 4288 Recovering log #184
-2022/12/25-22:31:16.563 4288 Reusing old log /home/ivan/.config/discord/Local Storage/leveldb/000184.log 
-2022/12/25-22:33:17.179 42e4 Level-0 table #188: started
-2022/12/25-22:33:17.201 42e4 Level-0 table #188: 1282454 bytes OK
-2022/12/25-22:33:17.203 42e4 Delete type=0 #184
