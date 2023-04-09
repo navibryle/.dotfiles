@@ -31,5 +31,5 @@ configstore
 nvim/.luacheckrc
 nvim/.luarc.json
 nvim/.stylua.toml
-**/__pycache__/
+__pycache__/
 s.sh
