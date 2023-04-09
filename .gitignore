@@ -29,3 +29,5 @@ mimeapps.list
 tmux/tmux-client-*.log
 configstore
 nvim/.luacheckrc
+nvim/.luarc.json
+nvim/.stylua.toml
