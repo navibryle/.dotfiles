@@ -24,3 +24,6 @@ discord
 xdg-terminals.list
 pacmixer
 QtProject.conf
+dconf
+mimeapps.list
+tmux/tmux-client-*.log
