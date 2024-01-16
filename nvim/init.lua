@@ -27,8 +27,6 @@ vim.opt.updatetime = 50
 vim.opt.shortmess:append "c"
 vim.opt.termguicolors = true
 vim.o.termguicolors = true
-require("presence"):setup()
-require("colorizer").setup()
 require("Comment").setup()
 vim.notify = require "notify"
 

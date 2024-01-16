@@ -37,7 +37,7 @@ cmp.setup {
 }
 nnoremap("gd", function() vim.lsp.buf.definition() end)
 nnoremap("gD", function() vim.lsp.buf.declaration() end)
-nnoremap("gI", function() vim.lsp.buf.implementation() end)
+nnoremap("gi", function() vim.lsp.buf.implementation() end)
 nnoremap("K", function() vim.lsp.buf.hover() end)
 nnoremap("<leader>vws", function() vim.lsp.buf.workspace_symbol() end)
 nnoremap("<leader>vd", function() vim.diagnostic.open_float() end)
@@ -129,6 +129,7 @@ require("lspconfig").bashls.setup {
 }
 require("lspconfig").sqlls.setup {
   on_attach = function(client, bufnr) require("sqls").on_attach(client, bufnr) end,
+  root_dir = function(fname) return vim.fn.getcwd() end,
 }
 require("nvim-lightbulb").setup { autocmd = { enabled = true } }
 local function lspSymbol(name, icon)

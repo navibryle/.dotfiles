@@ -26,11 +26,10 @@ require("packer").startup(function()
   use "nvim-treesitter/nvim-treesitter"
   use {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.0",
+    tag = "0.1.4",
     requires = { { "nvim-lua/plenary.nvim" } },
   }
   use "dylon/vim-antlr"
-  use "yorik1984/lualine-theme.nvim"
   use "romgrk/barbar.nvim"
   use "unblevable/quick-scope"
   use "kshenoy/vim-signature"
@@ -41,7 +40,6 @@ require("packer").startup(function()
   use "rmagatti/auto-session"
   use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
   use "theHamsta/nvim-dap-virtual-text"
-  use "NvChad/nvim-colorizer.lua"
   use {
     "andrewferrier/debugprint.nvim",
     config = function() require("debugprint").setup() end,
@@ -92,7 +90,6 @@ require("packer").startup(function()
       }
     end,
   }
-  use "andweeb/presence.nvim"
   use {
     "SmiteshP/nvim-navic",
     requires = "neovim/nvim-lspconfig",
@@ -112,6 +109,25 @@ require("packer").startup(function()
     config = function()
       vim.keymap.set("n", "<leader>dd", function() require("duck").hatch "ඞ" end, {})
       vim.keymap.set("n", "<leader>dk", function() require("duck").cook() end, {})
+    end,
+  }
+  use {
+    "dsych/blanket.nvim",
+    config = function()
+      require("blanket").setup {
+        report_path = "/home/ivan/hae/main/modules/sonarCoverage/target/jacoco.xml",
+        filetype = "java",
+        signs = {
+          priority = 1,
+          incomplete_branch = "█",
+          uncovered = "█",
+          covered = "█",
+          sign_group = "Blanket",
+          incomplete_branch_color = "WarningMsg",
+          covered_color = "Statement",
+          uncovered_color = "Error",
+        },
+      }
     end,
   }
 end)

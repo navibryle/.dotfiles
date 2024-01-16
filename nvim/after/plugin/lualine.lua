@@ -19,7 +19,6 @@ local colors = {
   red      = '#ec5f67',
   neonblue = '#1F51FF'
 }
-
 local conditions = {
   buffer_not_empty = function() return vim.fn.empty(vim.fn.expand "%:t") ~= 1 end,
   hide_in_width = function() return vim.fn.winwidth(0) > 80 end,
@@ -106,7 +105,7 @@ ins_left {
 }
 
 ins_left {
-  require("auto-session-library").current_session_name,
+  require("auto-session.lib").current_session_name,
   icon = "",
   color = { fg = colors.blue, gui = "bold" },
 }

@@ -62,4 +62,3 @@ require("telescope").setup {
     mappings = multi_open_mappings,
   },
 }
-require("telescope").load_extension "frecency"
