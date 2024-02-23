@@ -29,6 +29,8 @@ vim.opt.termguicolors = true
 vim.o.termguicolors = true
 
 local use = require("packer").use
+local Remap = require "uwu.keymaps"
+local nnoremap = Remap.nnoremap
 require("packer").startup(function()
   use "wbthomason/packer.nvim" -- Package manager
   use "neovim/nvim-lspconfig" -- Configurations for Nvim LSP
@@ -78,7 +80,6 @@ require("packer").startup(function()
   }
   use { "kevinhwang91/nvim-bqf" }
   use "windwp/nvim-ts-autotag"
-  use "p00f/nvim-ts-rainbow"
   use "marko-cerovac/material.nvim"
   use {
     "folke/trouble.nvim",
@@ -158,6 +159,20 @@ require("packer").startup(function()
       }
     end,
   }
+  use {
+    "nmac427/guess-indent.nvim",
+    config = function() require("guess-indent").setup {} end,
+  }
+  use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { { "nvim-lua/plenary.nvim" } },
+  }
+  use {
+    "pmizio/typescript-tools.nvim",
+    requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    config = function() require("typescript-tools").setup {} end,
+  }
 end)
 
 require("Comment").setup()
@@ -169,3 +184,6 @@ require "uwu"
 
 -- colorshceme
 vim.cmd "colorscheme material"
+
+-- load guess-indent
+require("guess-indent").setup {}

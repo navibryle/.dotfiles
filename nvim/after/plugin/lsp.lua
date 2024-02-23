@@ -5,10 +5,12 @@ local sumneko_root_path = "/home/ivan/.local/share/sumneko"
 local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 local cmp = require "cmp"
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspkind = require "lspkind"
 local navic = require "nvim-navic"
+
 capabilities.offsetEncoding = { "utf-16" }
+
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 cmp.setup {
   formatting = {
@@ -47,6 +49,7 @@ nnoremap("<leader>vca", function() vim.lsp.buf.code_action() end)
 nnoremap("<leader>vrr", function() vim.lsp.buf.references() end)
 nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end)
 inoremap("<C-h>", function() vim.lsp.buf.signature_help() end)
+
 local function defaultAttach(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     navic.attach(client, bufnr)
@@ -60,7 +63,9 @@ local function defaultAttach(client, bufnr)
   })
 end
 
--- Setup lspconfig.
+-- Setup lspconfig for each installed language server.
+-- look at "https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md" to see if the language server is already supported.
+-- otherwise you need to write the cmd yourself to get it to work.
 require("lspconfig").lua_ls.setup {
   capabilities = capabilities,
   on_attach = defaultAttach,
@@ -120,10 +125,20 @@ require("lspconfig").texlab.setup {
   capabilities = capabilities,
   on_attach = defaultAttach,
 }
+require("lspconfig").eslint.setup {
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+  end,
+}
 require("lspconfig").cmake.setup {}
+require("lspconfig").prismals.setup {}
 require("lspconfig").rust_analyzer.setup {
   on_attach = defaultAttach,
 }
+require("lspconfig").tailwindcss.setup {}
 require("lspconfig").bashls.setup {
   on_attach = defaultAttach,
 }
@@ -135,6 +150,14 @@ require("nvim-lightbulb").setup { autocmd = { enabled = true } }
 local function lspSymbol(name, icon)
   vim.fn.sign_define("DiagnosticSign" .. name, { text = icon, numhl = "DiagnosticDefault" .. name })
 end
+
+--Enable (broadcasting) snippet capability for completion
+local capabilities2 = vim.lsp.protocol.make_client_capabilities()
+capabilities2.textDocument.completion.completionItem.snippetSupport = true
+
+require("lspconfig").cssls.setup {
+  capabilities = capabilities2,
+}
 lspSymbol("Error", "")
 lspSymbol("Information", "")
 lspSymbol("Hint", "")

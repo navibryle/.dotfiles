@@ -162,7 +162,7 @@ bar {
 	position top
 	tray_output none
 	status_command /home/ivan/.config/i3/bumblebee-status/bumblebee-status \
-	-m nic pasink brightness indicator battery aur-update date time  -p nic.format={strength} indicator.include=Capslock \
+	-m pasink brightness indicator battery aur-update date time  -p nic.format={strength} indicator.include=Capslock \
 	-t iceberg
 }
 # move focused workspace between monitors

@@ -148,7 +148,7 @@ window:
   #startup_mode: Windowed
 
   # Window title
-  title: XD
+  title: Terminal
 
   # Allow terminal applications to change Alacritty's window title.
   dynamic_title: false
