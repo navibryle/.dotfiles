@@ -27,6 +27,7 @@ vim.opt.updatetime = 50
 vim.opt.shortmess:append "c"
 vim.opt.termguicolors = true
 vim.o.termguicolors = true
+vim.opt.mouse = ""
 
 local use = require("packer").use
 local Remap = require "uwu.keymaps"
