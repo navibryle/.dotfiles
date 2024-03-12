@@ -24,46 +24,46 @@ local function cs(trigger, nodes, opts) --{{{
   local keymaps = {}
 
   if opts ~= nil then
-    -- check for custom pattern
-    if opts.pattern then pattern = opts.pattern end
+  -- check for custom pattern
+  if opts.pattern then pattern = opts.pattern end
 
-    -- if opts is a string
-    if type(opts) == "string" then
-      if opts == "auto" then
-        target_table = autosnippets
-      else
-        table.insert(keymaps, { "i", opts })
-      end
+  -- if opts is a string
+  if type(opts) == "string" then
+    if opts == "auto" then
+    target_table = autosnippets
+    else
+    table.insert(keymaps, { "i", opts })
     end
+  end
 
-    -- if opts is a table
-    if opts ~= nil and type(opts) == "table" then
-      for _, keymap in ipairs(opts) do
-        if type(keymap) == "string" then
-          table.insert(keymaps, { "i", keymap })
-        else
-          table.insert(keymaps, keymap)
-        end
-      end
+  -- if opts is a table
+  if opts ~= nil and type(opts) == "table" then
+    for _, keymap in ipairs(opts) do
+    if type(keymap) == "string" then
+      table.insert(keymaps, { "i", keymap })
+    else
+      table.insert(keymaps, keymap)
     end
+    end
+  end
 
-    -- set autocmd for each keymap
-    if opts ~= "auto" then
-      for _, keymap in ipairs(keymaps) do
-        vim.api.nvim_create_autocmd("BufEnter", {
-          pattern = pattern,
-          group = group,
-          callback = function()
-            vim.keymap.set(
-              keymap[1],
-              keymap[2],
-              function() ls.snip_expand(snippet) end,
-              { noremap = true, silent = true, buffer = true }
-            )
-          end,
-        })
-      end
+  -- set autocmd for each keymap
+  if opts ~= "auto" then
+    for _, keymap in ipairs(keymaps) do
+    vim.api.nvim_create_autocmd("BufEnter", {
+      pattern = pattern,
+      group = group,
+      callback = function()
+      vim.keymap.set(
+        keymap[1],
+        keymap[2],
+        function() ls.snip_expand(snippet) end,
+        { noremap = true, silent = true, buffer = true }
+      )
+      end,
+    })
     end
+  end
   end
 
   table.insert(target_table, snippet) -- insert snippet into appropriate table
@@ -73,25 +73,25 @@ end --}}}
 
 local cp = s("cp", {
   t {
-    "#include <bits/stdc++.h>",
-    "#include <iomanip>",
-    "using namespace std;",
-    "#define rep(i, a, b) for (int i = a; i < (b); ++i)",
-    "#define trav(a, x) for(auto& a : x)",
-    "#define all(x) begin(x), end(x)",
-    "#define sz(x) (int)(x).size()",
-    "typedef long long ll;",
-    "typedef pair<int, int> pii;",
-    "typedef pair<ll, ll> pll;",
-    "typedef vector<int> vi;",
-    "typedef vector<ll> vl;",
-    "typedef vector<vl> vvl;",
-    "typedef vector<pll> vpl;",
-    "typedef pair<long double, long double> pdd;",
-    "typedef vector<pdd> vpd;",
-    "int main() {",
-    "   return 0;",
-    "}",
+  "#include <bits/stdc++.h>",
+  "#include <iomanip>",
+  "using namespace std;",
+  "#define rep(i, a, b) for (int i = a; i < (b); ++i)",
+  "#define trav(a, x) for(auto& a : x)",
+  "#define all(x) begin(x), end(x)",
+  "#define sz(x) (int)(x).size()",
+  "typedef long long ll;",
+  "typedef pair<int, int> pii;",
+  "typedef pair<ll, ll> pll;",
+  "typedef vector<int> vi;",
+  "typedef vector<ll> vl;",
+  "typedef vector<vl> vvl;",
+  "typedef vector<pll> vpl;",
+  "typedef pair<long double, long double> pdd;",
+  "typedef vector<pdd> vpd;",
+  "int main() {",
+  "   return 0;",
+  "}",
   },
 })
 table.insert(snippets, cp)

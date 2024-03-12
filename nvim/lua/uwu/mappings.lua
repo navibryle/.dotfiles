@@ -55,7 +55,7 @@ nnoremap("gP", function() require("goto-preview").close_all_win() end)
 nnoremap("gpr", function() require("goto-preview").goto_preview_references() end)
 nnoremap("<leader>o", function()
   if string.find(vim.bo.filetype, "typescript") ~= 0 then
-    vim.cmd "TSToolsAddMissingImports"
-    vim.cmd "TSToolsOrganizeImports"
+  vim.cmd "TSToolsAddMissingImports"
+  vim.cmd "TSToolsOrganizeImports"
   end
 end)

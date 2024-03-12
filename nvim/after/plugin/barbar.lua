@@ -2,8 +2,8 @@
 vim.g.barbar_auto_setup = false -- disable auto-setup
 require("barbar").setup {
   -- WARN: do not copy everything below into your config!
-  --       It is just an example of what configuration options there are.
-  --       The defaults are suitable for most people.
+  --     It is just an example of what configuration options there are.
+  --     The defaults are suitable for most people.
 
   -- Enable/disable animations
   animation = false,
@@ -40,38 +40,38 @@ require("barbar").setup {
   highlight_visible = true,
 
   icons = {
-    -- Configure the base icons on the bufferline.
-    buffer_index = false,
-    buffer_number = false,
-    button = "",
-    -- Enables / disables diagnostic symbols
-    diagnostics = {
-      [vim.diagnostic.severity.ERROR] = { enabled = true, icon = "ﬀ" },
-      [vim.diagnostic.severity.WARN] = { enabled = false },
-      [vim.diagnostic.severity.INFO] = { enabled = false },
-      [vim.diagnostic.severity.HINT] = { enabled = true },
-    },
-    filetype = {
-      -- Sets the icon's highlight group.
-      -- If false, will use nvim-web-devicons colors
-      custom_colors = false,
+  -- Configure the base icons on the bufferline.
+  buffer_index = false,
+  buffer_number = false,
+  button = "",
+  -- Enables / disables diagnostic symbols
+  diagnostics = {
+    [vim.diagnostic.severity.ERROR] = { enabled = true, icon = "ﬀ" },
+    [vim.diagnostic.severity.WARN] = { enabled = false },
+    [vim.diagnostic.severity.INFO] = { enabled = false },
+    [vim.diagnostic.severity.HINT] = { enabled = true },
+  },
+  filetype = {
+    -- Sets the icon's highlight group.
+    -- If false, will use nvim-web-devicons colors
+    custom_colors = false,
 
-      -- Requires `nvim-web-devicons` if `true`
-      enabled = true,
-    },
-    separator = { left = "▎", right = "" },
+    -- Requires `nvim-web-devicons` if `true`
+    enabled = true,
+  },
+  separator = { left = "▎", right = "" },
 
-    -- Configure the icons on the bufferline when modified or pinned.
-    -- Supports all the base icon options.
-    modified = { button = "●" },
-    pinned = { button = "車", filename = true, separator = { right = "" } },
+  -- Configure the icons on the bufferline when modified or pinned.
+  -- Supports all the base icon options.
+  modified = { button = "●" },
+  pinned = { button = "車", filename = true, separator = { right = "" } },
 
-    -- Configure the icons on the bufferline based on the visibility of a buffer.
-    -- Supports all the base icon options, plus `modified` and `pinned`.
-    alternate = { filetype = { enabled = false } },
-    current = { buffer_index = true },
-    inactive = { button = "×" },
-    visible = { modified = { buffer_number = false } },
+  -- Configure the icons on the bufferline based on the visibility of a buffer.
+  -- Supports all the base icon options, plus `modified` and `pinned`.
+  alternate = { filetype = { enabled = false } },
+  current = { buffer_index = true },
+  inactive = { button = "×" },
+  visible = { modified = { buffer_number = false } },
   },
 
   -- If true, new buffers will be inserted at the start/end of the list.
@@ -96,14 +96,14 @@ require("barbar").setup {
 
   -- Set the filetypes which barbar will offset itself for
   sidebar_filetypes = {
-    -- Use the default values: {event = 'BufWinLeave', text = nil}
-    NvimTree = true,
-    -- Or, specify the text used for the offset:
-    undotree = { text = "undotree" },
-    -- Or, specify the event which the sidebar executes when leaving:
-    ["neo-tree"] = { event = "BufWipeout" },
-    -- Or, specify both
-    Outline = { event = "BufWinLeave", text = "symbols-outline" },
+  -- Use the default values: {event = 'BufWinLeave', text = nil}
+  NvimTree = true,
+  -- Or, specify the text used for the offset:
+  undotree = { text = "undotree" },
+  -- Or, specify the event which the sidebar executes when leaving:
+  ["neo-tree"] = { event = "BufWipeout" },
+  -- Or, specify both
+  Outline = { event = "BufWinLeave", text = "symbols-outline" },
   },
 
   -- New buffer letters are assigned in this order. This order is
@@ -140,13 +140,13 @@ map("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
 -- Close buffer
 map("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
 -- Wipeout buffer
---                 :BufferWipeout
+--         :BufferWipeout
 -- Close commands
---                 :BufferCloseAllButCurrent
---                 :BufferCloseAllButPinned
---                 :BufferCloseAllButCurrentOrPinned
---                 :BufferCloseBuffersLeft
---                 :BufferCloseBuffersRight
+--         :BufferCloseAllButCurrent
+--         :BufferCloseAllButPinned
+--         :BufferCloseAllButCurrentOrPinned
+--         :BufferCloseBuffersLeft
+--         :BufferCloseBuffersRight
 -- Magic buffer-picking mode
 map("n", "<C-p>", "<Cmd>BufferPick<CR>", opts)
 -- Sort automatically by...
@@ -158,7 +158,7 @@ map("n", "<Space>bw", "<Cmd>BufferOrderByWindowNumber<CR>", opts)
 vim.api.nvim_create_autocmd("BufWinEnter", {
   pattern = "*",
   callback = function()
-    if vim.bo.filetype == "NvimTree" then require("bufferline.api").set_offset(31, "FileTree") end
+  if vim.bo.filetype == "NvimTree" then require("bufferline.api").set_offset(31, "FileTree") end
   end,
 })
 local nvim_tree_events = require "nvim-tree.events"

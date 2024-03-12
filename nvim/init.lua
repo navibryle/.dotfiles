@@ -40,13 +40,13 @@ require("packer").startup(function()
   use "lukas-reineke/indent-blankline.nvim"
   use "kyazdani42/nvim-web-devicons"
   use {
-    "goolord/alpha-nvim",
-    config = function() require("alpha").setup(require("alpha.themes.startify").config) end,
+  "goolord/alpha-nvim",
+  config = function() require("alpha").setup(require("alpha.themes.startify").config) end,
   }
   use "kyazdani42/nvim-tree.lua"
   use {
-    "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+  "nvim-lualine/lualine.nvim",
+  requires = { "kyazdani42/nvim-web-devicons", opt = true },
   }
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-buffer"
@@ -56,123 +56,119 @@ require("packer").startup(function()
   use "nvim-lua/plenary.nvim"
   use "nvim-treesitter/nvim-treesitter"
   use {
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.4",
-    requires = { { "nvim-lua/plenary.nvim" } },
+  "nvim-telescope/telescope.nvim",
+  tag = "0.1.4",
+  requires = { { "nvim-lua/plenary.nvim" } },
   }
   use "dylon/vim-antlr"
   use "romgrk/barbar.nvim"
   use "unblevable/quick-scope"
   use "kshenoy/vim-signature"
   use {
-    "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end,
+  "windwp/nvim-autopairs",
+  config = function() require("nvim-autopairs").setup {} end,
   }
   use "rmagatti/auto-session"
   use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
   use "theHamsta/nvim-dap-virtual-text"
   use {
-    "andrewferrier/debugprint.nvim",
-    config = function() require("debugprint").setup() end,
+  "andrewferrier/debugprint.nvim",
+  config = function() require("debugprint").setup() end,
   }
   use {
-    "numToStr/Comment.nvim",
-    config = function() require("Comment").setup() end,
+  "numToStr/Comment.nvim",
+  config = function() require("Comment").setup() end,
   }
   use { "kevinhwang91/nvim-bqf" }
   use "windwp/nvim-ts-autotag"
   use "marko-cerovac/material.nvim"
   use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function() require("trouble").setup {} end,
+  "folke/trouble.nvim",
+  requires = "kyazdani42/nvim-web-devicons",
+  config = function() require("trouble").setup {} end,
   }
   use {
-    "kosayoda/nvim-lightbulb",
-    requires = "antoinemadec/FixCursorHold.nvim",
+  "kosayoda/nvim-lightbulb",
+  requires = "antoinemadec/FixCursorHold.nvim",
   }
   use "onsails/lspkind.nvim"
   use {
-    "stevearc/aerial.nvim",
-    config = function() require("aerial").setup() end,
+  "stevearc/aerial.nvim",
+  config = function() require("aerial").setup() end,
   }
   use "mfussenegger/nvim-lint"
   use { "mhartington/formatter.nvim" }
   use "rcarriga/nvim-notify"
   use {
-    "vimwiki/vimwiki",
-    config = function()
-      vim.g.vimwiki_list = {
-        {
-          template_path = "/home/ivan/.local/share/vimwiki/templates",
-          template_default = "default",
-          template_ext = ".html",
-        },
-      }
-    end,
+  "vimwiki/vimwiki",
+  config = function()
+    vim.g.vimwiki_list = {
+    {
+      template_path = "/home/ivan/.local/share/vimwiki/templates",
+      template_default = "default",
+      template_ext = ".html",
+    },
+    }
+  end,
   }
   use "stevearc/dressing.nvim"
   use {
-    "ziontee113/icon-picker.nvim",
-    config = function()
-      require("icon-picker").setup {
-        disable_legacy_commands = true,
-      }
-    end,
+  "ziontee113/icon-picker.nvim",
+  config = function()
+    require("icon-picker").setup {
+    disable_legacy_commands = true,
+    }
+  end,
   }
   use {
-    "SmiteshP/nvim-navic",
-    requires = "neovim/nvim-lspconfig",
+  "SmiteshP/nvim-navic",
+  requires = "neovim/nvim-lspconfig",
   }
   use {
-    "rmagatti/goto-preview",
-    config = function() require("goto-preview").setup {} end,
+  "rmagatti/goto-preview",
+  config = function() require("goto-preview").setup {} end,
   }
   use { "akinsho/git-conflict.nvim", tag = "*", config = function() require("git-conflict").setup() end }
   use {
-    "nvim-telescope/telescope-frecency.nvim",
-    requires = { "kkharji/sqlite.lua" },
+  "nvim-telescope/telescope-frecency.nvim",
+  requires = { "kkharji/sqlite.lua" },
   }
   use "nanotee/sqls.nvim"
   use {
-    "tamton-aquib/duck.nvim",
-    config = function()
-      vim.keymap.set("n", "<leader>dd", function() require("duck").hatch "ඞ" end, {})
-      vim.keymap.set("n", "<leader>dk", function() require("duck").cook() end, {})
-    end,
+  "tamton-aquib/duck.nvim",
+  config = function()
+    vim.keymap.set("n", "<leader>dd", function() require("duck").hatch "ඞ" end, {})
+    vim.keymap.set("n", "<leader>dk", function() require("duck").cook() end, {})
+  end,
   }
   use {
-    "dsych/blanket.nvim",
-    config = function()
-      require("blanket").setup {
-        report_path = "/home/ivan/hae/main/modules/sonarCoverage/target/jacoco.xml",
-        filetype = "java",
-        signs = {
-          priority = 1,
-          incomplete_branch = "█",
-          uncovered = "█",
-          covered = "█",
-          sign_group = "Blanket",
-          incomplete_branch_color = "WarningMsg",
-          covered_color = "Statement",
-          uncovered_color = "Error",
-        },
-      }
-    end,
+  "dsych/blanket.nvim",
+  config = function()
+    require("blanket").setup {
+    report_path = "/home/ivan/hae/main/modules/sonarCoverage/target/jacoco.xml",
+    filetype = "java",
+    signs = {
+      priority = 1,
+      incomplete_branch = "█",
+      uncovered = "█",
+      covered = "█",
+      sign_group = "Blanket",
+      incomplete_branch_color = "WarningMsg",
+      covered_color = "Statement",
+      uncovered_color = "Error",
+    },
+    }
+  end,
   }
   use {
-    "nmac427/guess-indent.nvim",
-    config = function() require("guess-indent").setup {} end,
+  "ThePrimeagen/harpoon",
+  branch = "harpoon2",
+  requires = { { "nvim-lua/plenary.nvim" } },
   }
   use {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    requires = { { "nvim-lua/plenary.nvim" } },
-  }
-  use {
-    "pmizio/typescript-tools.nvim",
-    requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    config = function() require("typescript-tools").setup {} end,
+  "pmizio/typescript-tools.nvim",
+  requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  config = function() require("typescript-tools").setup {} end,
   }
 end)
 
@@ -185,6 +181,3 @@ require "uwu"
 
 -- colorshceme
 vim.cmd "colorscheme material"
-
--- load guess-indent
-require("guess-indent").setup {}

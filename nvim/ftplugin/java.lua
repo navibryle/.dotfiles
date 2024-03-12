@@ -8,47 +8,47 @@ local javaBundles = {
 vim.list_extend(javaBundles, vim.split(vim.fn.glob "/home/ivan/.local/share/vscode-java-test/server/*.jar", "\n"))
 local javaConfig = {
   cmd = {
-    "/usr/lib/jvm/java-17-openjdk/bin/java",
-    "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-    "-Dosgi.bundles.defaultStartLevel=4",
-    "-Declipse.product=org.eclipse.jdt.ls.core.product",
-    "-Dlog.protocol=true",
-    "-Dlog.level=ALL",
-    "-Xms1g",
-    "--add-modules=ALL-SYSTEM",
-    "--add-opens",
-    "java.base/java.util=ALL-UNNAMED",
-    "--add-opens",
-    "java.base/java.lang=ALL-UNNAMED",
-    "-jar",
-    "/home/ivan/.local/share/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
-    "-configuration",
-    "/home/ivan/.local/share/jdtls/config_linux",
-    "-data",
-    "/home/ivan/.local/share/eclipse-project-data/" .. project_name,
+  "/usr/lib/jvm/java-17-openjdk/bin/java",
+  "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+  "-Dosgi.bundles.defaultStartLevel=4",
+  "-Declipse.product=org.eclipse.jdt.ls.core.product",
+  "-Dlog.protocol=true",
+  "-Dlog.level=ALL",
+  "-Xms1g",
+  "--add-modules=ALL-SYSTEM",
+  "--add-opens",
+  "java.base/java.util=ALL-UNNAMED",
+  "--add-opens",
+  "java.base/java.lang=ALL-UNNAMED",
+  "-jar",
+  "/home/ivan/.local/share/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+  "-configuration",
+  "/home/ivan/.local/share/jdtls/config_linux",
+  "-data",
+  "/home/ivan/.local/share/eclipse-project-data/" .. project_name,
   },
   on_attach = function(client, buffer)
-    if client.server_capabilities.documentSymbolProvider then
-      navic.attach(client, buffer)
-      vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-    end
-    require("jdtls").setup_dap { hotcodereplace = "auto" }
-    require("jdtls.dap").setup_dap_main_class_configs()
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, buffer)
+    vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+  end
+  require("jdtls").setup_dap { hotcodereplace = "auto" }
+  require("jdtls.dap").setup_dap_main_class_configs()
   end,
   settings = {
-    java = {
-      configuration = {
-        runtimes = {
-          {
-            name = "JavaSE-1.8",
-            path = "/usr/lib/jvm/jdk8u282-b08",
-          },
-        },
+  java = {
+    configuration = {
+    runtimes = {
+      {
+      name = "JavaSE-1.8",
+      path = "/usr/lib/jvm/jdk8u282-b08",
       },
     },
+    },
+  },
   },
   init_options = {
-    bundles = javaBundles,
+  bundles = javaBundles,
   },
 }
 require("jdtls").start_or_attach(javaConfig)

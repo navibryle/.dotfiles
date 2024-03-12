@@ -13,11 +13,11 @@ ls.config.set_config {
   updateevents = "TextChanged,TextChangedI", --update changes as you type
   enable_autosnippets = true,
   ext_opts = {
-    [types.choiceNode] = {
-      active = {
-        virt_text = { { "●", "GruvboxOrange" } },
-      },
+  [types.choiceNode] = {
+    active = {
+    virt_text = { { "●", "GruvboxOrange" } },
     },
+  },
   },
 } --}}}
 -- Key Mapping --{{{
