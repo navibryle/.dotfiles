@@ -1,8 +1,6 @@
 local Remap = require "uwu.keymaps"
 local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
-local sumneko_root_path = "/home/ivan/.local/share/sumneko"
-local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 local cmp = require "cmp"
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -11,32 +9,35 @@ local navic = require "nvim-navic"
 
 capabilities.offsetEncoding = { "utf-16" }
 
+-- autocomplete
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 cmp.setup {
   formatting = {
-  format = lspkind.cmp_format {
-    mode = "symbol", -- show only symbol annotations
-    maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      format = lspkind.cmp_format {
+        mode = "symbol", -- show only symbol annotations
+        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 
-    -- The function below will be called before any actual modifications from lspkind
-    -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-    before = function(entry, vim_item) return vim_item end,
-  },
+        -- The function below will be called before any actual modifications from lspkind
+        -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+        before = function(entry, vim_item) return vim_item end,
+      },
   },
   snippet = {
-  expand = function(args) require("luasnip").lsp_expand(args.body) end,
+      expand = function(args) require("luasnip").lsp_expand(args.body) end,
   },
   mapping = cmp.mapping.preset.insert {
-  ["<C-y>"] = cmp.mapping.confirm { select = true },
-  ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-  ["<C-u>"] = cmp.mapping.scroll_docs(4),
-  ["<C-Space>"] = cmp.mapping.complete(),
+      ["<C-y>"] = cmp.mapping.confirm { select = true },
+      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+      ["<C-u>"] = cmp.mapping.scroll_docs(4),
+      ["<C-Space>"] = cmp.mapping.complete(),
   },
   sources = cmp.config.sources {
-  { name = "nvim_lsp" },
-  { name = "luasnip" },
+      { name = "nvim_lsp" },
+      { name = "luasnip" },
   },
 }
+
+-- mappings for lsp
 nnoremap("gd", function() vim.lsp.buf.definition() end)
 nnoremap("gD", function() vim.lsp.buf.declaration() end)
 nnoremap("gi", function() vim.lsp.buf.implementation() end)
@@ -63,35 +64,40 @@ local function defaultAttach(client, bufnr)
   })
 end
 
--- Setup lspconfig for each installed language server.
--- look at "https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md" to see if the language server is already supported.
--- otherwise you need to write the cmd yourself to get it to work.
-require("lspconfig").lua_ls.setup {
+require'lspconfig'.lua_ls.setup {
   capabilities = capabilities,
   on_attach = defaultAttach,
-  cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+  on_init = function(client)
+    if client.workspace_folders then
+      local path = client.workspace_folders[1].name
+      if path ~= vim.fn.stdpath('config') and (vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc')) then
+        return
+      end
+    end
+
+    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+      runtime = {
+        -- Tell the language server which version of Lua you're using
+        -- (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT'
+      },
+      -- Make the server aware of Neovim runtime files
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          vim.env.VIMRUNTIME
+          -- Depending on the usage, you might want to add additional paths here.
+          -- "${3rd}/luv/library"
+          -- "${3rd}/busted/library",
+        }
+        -- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
+        -- library = vim.api.nvim_get_runtime_file("", true)
+      }
+    })
+  end,
   settings = {
-  Lua = {
-    runtime = {
-    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-    version = "Lua 5.4",
-    -- Setup your lua path
-    path = "/usr/bin/lua",
-    },
-    diagnostics = {
-    -- Get the language server to recognize the `vim` global
-    globals = { "vim" },
-    },
-    workspace = {
-    -- Make the server aware of Neovim runtime files
-    library = {
-      [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-      [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-      "/usr/share/lua/5.4/re.lua",
-    },
-    },
-  },
-  },
+    Lua = {}
+  }
 }
 require("lspconfig").vimls.setup {
   capabilities = capabilities,

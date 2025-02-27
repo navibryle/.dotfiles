@@ -161,11 +161,6 @@ require("packer").startup(function()
   end,
   }
   use {
-  "ThePrimeagen/harpoon",
-  branch = "harpoon2",
-  requires = { { "nvim-lua/plenary.nvim" } },
-  }
-  use {
   "pmizio/typescript-tools.nvim",
   requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   config = function() require("typescript-tools").setup {} end,

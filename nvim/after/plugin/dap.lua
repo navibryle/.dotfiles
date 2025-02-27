@@ -4,7 +4,7 @@ dap.adapters.codelldb = {
   host = "127.0.0.1",
   port = "8080",
   executable = {
-  command = "/home/ivan/.local/share/extension_/adapter/codelldb",
+  command = os.getenv("HOME") ..  "/.local/share/extension_/adapter/codelldb",
   args = { "--port", "8080" },
   },
 }
