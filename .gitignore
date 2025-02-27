@@ -34,3 +34,4 @@ nvim/.stylua.toml
 __pycache__/
 *.pyc
 s.sh
+nvim/plugin/packer_compiled.lua
