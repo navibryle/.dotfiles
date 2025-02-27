@@ -33,7 +33,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id bash /home/ivan/.config/rofi/launchers/type-2/launcher.sh
+bindsym $mod+d exec --no-startup-id bash $HOME/.config/rofi/launchers/type-2/launcher.sh
 
 # change focus
 bindsym $mod+h focus left

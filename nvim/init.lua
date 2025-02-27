@@ -170,6 +170,7 @@ require("packer").startup(function()
   requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   config = function() require("typescript-tools").setup {} end,
   }
+  use { "nvim-neotest/nvim-nio" }
 end)
 
 require("Comment").setup()
