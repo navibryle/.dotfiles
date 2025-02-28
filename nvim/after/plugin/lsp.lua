@@ -51,13 +51,25 @@ nnoremap("<leader>vrr", function() vim.lsp.buf.references() end)
 nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end)
 inoremap("<C-h>", function() vim.lsp.buf.signature_help() end)
 
+local function attachNavic(client,bufnr)
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+    vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+  end
+end
+
 local function defaultAttach(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
-  navic.attach(client, bufnr)
-  vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+    navic.attach(client, bufnr)
+    vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
   end
   vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   callback = function()
+    if client.server_capabilities.diagnosticProvider ~= nil then
+      if client.server_capabilities.diagnosticProvider.identifier == "eslint" then
+        vim.lsp.buf.format()
+      end
+    end
     require("lint").try_lint()
     vim.cmd "FormatWrite"
   end,
@@ -163,6 +175,46 @@ capabilities2.textDocument.completion.completionItem.snippetSupport = true
 
 require("lspconfig").cssls.setup {
   capabilities = capabilities2,
+}
+
+function printAll(inp,numSpaces)
+  for key, value in pairs(inp) do
+    local space = ""
+    for i = 0,numSpaces do
+      space = space .. " "
+    end
+    if type(value) == "table" then
+      local out = printAll(value,numSpaces+1);
+      print(space .. key .. ":")
+      print(out)
+    else
+      print(space .. key .. ":" )
+    end
+  end
+  
+end
+require'lspconfig'.ts_ls.setup{
+  cmd = { "typescript-language-server", "--stdio" },
+  capabilities = capabilities,
+  on_attach = function (client,bufnr)
+    attachNavic(client,bufnr)
+    nnoremap("<leader>o",function ()
+      local nonTsLs = {}
+      -- remove non ts LSPs
+      for _, lsp in pairs(vim.lsp.get_clients()) do
+        if lsp.name ~= "ts_ls" then
+          table.insert(nonTsLs,lsp)
+          vim.lsp.buf_detach_client(bufnr,lsp.id)
+        end
+      end
+      -- run command
+      vim.lsp.buf.execute_command({command = "_typescript.organizeImports",arguments = {vim.api.nvim_buf_get_name(bufnr)}})
+      -- add back LSPs
+      for _,lsp in pairs(nonTsLs) do
+        vim.lsp.buf_attach_client(bufnr,lsp.id)
+      end
+    end)
+  end,
 }
 lspSymbol("Error", "")
 lspSymbol("Information", "")

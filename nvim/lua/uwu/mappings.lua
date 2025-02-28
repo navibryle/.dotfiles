@@ -53,9 +53,3 @@ nnoremap("gpt", function() require("goto-preview").goto_preview_type_definition(
 nnoremap("gpi", function() require("goto-preview").goto_preview_implementation() end)
 nnoremap("gP", function() require("goto-preview").close_all_win() end)
 nnoremap("gpr", function() require("goto-preview").goto_preview_references() end)
-nnoremap("<leader>o", function()
-  if string.find(vim.bo.filetype, "typescript") ~= 0 then
-  vim.cmd "TSToolsAddMissingImports"
-  vim.cmd "TSToolsOrganizeImports"
-  end
-end)
