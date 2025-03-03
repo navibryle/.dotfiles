@@ -4,8 +4,8 @@ require("nvim-tree").setup {
   respect_buf_cwd = true,
   update_cwd = true,
   view = {
-  relativenumber = true,
-  adaptive_size = true,
+    relativenumber = true,
+    adaptive_size = true,
   },
   update_focused_file = {
   enable = true,
@@ -15,10 +15,10 @@ require("nvim-tree").setup {
   },
   renderer = {
   highlight_opened_files = "all",
-  group_empty = true,
+  group_empty = false,
   icons = {
     show = {
-    folder_arrow = false,
+      folder_arrow = false,
     },
   },
   },
