@@ -1,4 +1,4 @@
-require("nvim-tree").setup {
+require("nvim-tree").setup({
   reload_on_bufenter = false,
   sort_by = "case_sensitive",
   respect_buf_cwd = true,
@@ -8,18 +8,18 @@ require("nvim-tree").setup {
     adaptive_size = true,
   },
   update_focused_file = {
-  enable = true,
-  debounce_delay = 15,
-  update_root = false,
-  ignore_list = {},
+    enable = true,
+    debounce_delay = 15,
+    update_root = false,
+    ignore_list = {},
   },
   renderer = {
-  highlight_opened_files = "all",
-  group_empty = false,
-  icons = {
-    show = {
-      folder_arrow = false,
+    highlight_opened_files = "all",
+    group_empty = false,
+    icons = {
+      show = {
+        folder_arrow = false,
+      },
     },
   },
-  },
-}
+})
