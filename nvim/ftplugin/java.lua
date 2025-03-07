@@ -5,7 +5,7 @@ local navic = require("nvim-navic")
 local javaBundles = {
   vim.fn.glob(
     os.getenv("HOME")
-      .. "/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.53.1.jar"
+      .. "/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
   ),
 }
 vim.list_extend(
@@ -39,7 +39,6 @@ local javaConfig = {
       vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
     end
     require("jdtls").setup_dap({ hotcodereplace = "auto" })
-    require("jdtls.dap").setup_dap_main_class_configs()
   end,
   settings = {
     java = {
