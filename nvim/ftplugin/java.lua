@@ -27,7 +27,7 @@ local javaConfig = {
     "--add-opens",
     "java.base/java.lang=ALL-UNNAMED",
     "-jar",
-    os.getenv("HOME") .. "/.local/share/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+    os.getenv("HOME") .. "/.local/share/jdtls/plugins/org.eclipse.equinox.launcher_1.6.1000.v20250227-1734.jar",
     "-configuration",
     os.getenv("HOME") .. "/.local/share/jdtls/config_linux",
     "-data",
