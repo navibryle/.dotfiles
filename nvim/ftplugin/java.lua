@@ -88,7 +88,8 @@ local javaConfig = {
     bundles = javaBundles,
   },
 }
-require("jdtls").start_or_attach(javaConfig)
+vim.lsp.enable("jdtls")
+vim.lsp.config("jdtls",javaConfig)
 nnoremap("<leader>tc", function()
   require("jdtls").test_class()
 end)
