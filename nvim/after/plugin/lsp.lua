@@ -98,7 +98,25 @@ local function defaultAttach(client, bufnr)
   })
 end
 
-require("lspconfig").lua_ls.setup({
+vim.lsp.enable({
+  "ts_ls",
+  "dockerls",
+  "docker_compose_language_service",
+  "pyright",
+  "clangd",
+  "eslint",
+  "cmake",
+  "prismals",
+  "rust_analyzer",
+  "tailwindcss",
+  "bashls",
+  "cssls",
+})
+vim.lsp.config("*", {
+  capabilities = capabilities,
+  on_attach = defaultAttach,
+})
+vim.lsp.config("lua_ls", {
   capabilities = capabilities,
   on_attach = defaultAttach,
   on_init = function(client)
@@ -136,63 +154,6 @@ require("lspconfig").lua_ls.setup({
     Lua = {},
   },
 })
-require("lspconfig").vimls.setup({
-  capabilities = capabilities,
-  on_attach = defaultAttach,
-})
-require("lspconfig")["pyright"].setup({
-  capabilities = capabilities,
-  on_attach = defaultAttach,
-})
-require("lspconfig").clangd.setup({
-  capabilities = capabilities,
-  on_attach = defaultAttach,
-})
-require("lspconfig").texlab.setup({
-  settings = {
-    texlab = {
-      diagnosticsDelay = 100,
-      build = {
-        onSave = true,
-        args = {
-          "-synctex=1",
-          "-interaction=nonstopmode",
-          "-file-line-error",
-          "-pdf",
-          "-outdir=build",
-          "%f",
-        },
-      },
-    },
-  },
-  capabilities = capabilities,
-  on_attach = defaultAttach,
-})
-require("lspconfig").eslint.setup({
-  on_attach = function(client, bufnr)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      command = "EslintFixAll",
-    })
-  end,
-})
-require("lspconfig").cmake.setup({})
-require("lspconfig").prismals.setup({})
-require("lspconfig").rust_analyzer.setup({
-  on_attach = defaultAttach,
-})
-require("lspconfig").tailwindcss.setup({})
-require("lspconfig").bashls.setup({
-  on_attach = defaultAttach,
-})
-require("lspconfig").sqlls.setup({
-  on_attach = function(client, bufnr)
-    require("sqls").on_attach(client, bufnr)
-  end,
-  root_dir = function(fname)
-    return vim.fn.getcwd()
-  end,
-})
 require("nvim-lightbulb").setup({ autocmd = { enabled = true } })
 local function lspSymbol(name, icon)
   vim.fn.sign_define("DiagnosticSign" .. name, { text = icon, numhl = "DiagnosticDefault" .. name })
@@ -201,10 +162,6 @@ end
 --Enable (broadcasting) snippet capability for completion
 local capabilities2 = vim.lsp.protocol.make_client_capabilities()
 capabilities2.textDocument.completion.completionItem.snippetSupport = true
-
-require("lspconfig").cssls.setup({
-  capabilities = capabilities2,
-})
 
 function printAll(inp, numSpaces)
   for key, value in pairs(inp) do
@@ -222,7 +179,20 @@ function printAll(inp, numSpaces)
   end
 end
 
-require("lspconfig").ts_ls.setup({
+vim.lsp.config("cssls", {
+  capabilities = capabilities2,
+})
+vim.lsp.config("eslint", {
+  {
+    on_attach = function(client, bufnr)
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        command = "EslintFixAll",
+      })
+    end,
+  },
+})
+vim.lsp.config("ts_ls", {
   cmd = { "typescript-language-server", "--stdio" },
   capabilities = capabilities,
   on_attach = function(client, bufnr)
@@ -252,10 +222,12 @@ require("lspconfig").ts_ls.setup({
     end)
   end,
 })
-require("lspconfig").dockerls.setup({})
-require("lspconfig").docker_compose_language_service.setup({
+
+vim.lsp.config("docker_compose_language_service", {
   filetypes = { "yaml" },
 })
+
+-- vim.lsp.enable("jsonls")
 lspSymbol("Error", "")
 lspSymbol("Information", "")
 lspSymbol("Hint", "")
