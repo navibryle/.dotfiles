@@ -110,6 +110,7 @@ vim.lsp.enable({
   "rust_analyzer",
   "tailwindcss",
   "bashls",
+  "gopls",
   "cssls",
 })
 local function fix_all(opts)
