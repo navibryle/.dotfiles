@@ -72,7 +72,13 @@ require("lazy").setup({
     { "L3MON4D3/LuaSnip", lazy = false },
     { "saadparwaiz1/cmp_luasnip", lazy = false },
     { "nvim-lua/plenary.nvim", lazy = false },
-    { "nvim-treesitter/nvim-treesitter", lazy = false },
+    { "nvim-treesitter/nvim-treesitter", lazy = false,
+      branch =  "main",
+      dependencies = {
+          'nvim-treesitter/nvim-treesitter-textobjects',
+      },
+      build = ':TSUpdate',
+    },
     {
       "nvim-telescope/telescope.nvim",
       lazy = false,

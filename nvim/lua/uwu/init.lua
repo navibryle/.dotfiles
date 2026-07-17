@@ -1,5 +1,4 @@
 require "uwu.keymaps"
-require "uwu.treesitter"
 require "uwu.aerial"
 require "uwu.mappings"
 require "uwu.colorscheme"
